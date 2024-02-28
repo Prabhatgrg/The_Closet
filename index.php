@@ -1,7 +1,7 @@
 <?php
 require 'header.php'; ?>
 
-<section class="cart">
+<section class="cart py-3">
     <div class="container">
         <div class="row">
             <div class="col-12 text-end">
@@ -32,12 +32,12 @@ require 'header.php'; ?>
                             ?>
 
                                 <tr>
-                                    <td><img class="rounded-circle" src="./uploads/<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
+                                    <td><img style="width: 4rem; aspect-ratio: 1; object-fit-cover;" class="rounded-circle me-2" src="./uploads/<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
                                     <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
                                     <td><?php echo $cart_product['cart_price'] ?></td>
                                     <td><?php echo $cart_product['total_price'] ?></td>
-                                    <td><a href="?remove=<?php echo $cart_product['cart_id'] ?>" class="btn-close" aria-label="Close"><span class="d-none">close</span></a></td>
+                                    <td><a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close" aria-label="Close"><span class="d-none">close</span></a></td>
                                 </tr>
 
                             <?php endforeach; ?>
@@ -57,11 +57,11 @@ require 'header.php'; ?>
 
 <hr>
 
-<section class="products">
+<section class="products py-4">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Products</h2>
+                <h2 class="mb-4">Products</h2>
             </div>
 
             <?php
@@ -82,8 +82,10 @@ require 'header.php'; ?>
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                    <input type="number" name="cart_qty" value="1">
-                                    <button class="btn btn-primary mt-3" type="submit">Add to cart</button>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="number" name="cart_qty" min='1' max='10' value="1">
+                                        <button class="btn btn-primary ms-3 flex-shrink-0 " type="submit">Add to cart</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

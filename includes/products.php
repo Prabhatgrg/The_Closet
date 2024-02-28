@@ -23,7 +23,14 @@ function get_cart_products()
 {
     global $con;
 
-    $stmt = $con->prepare("SELECT * FROM cart");
+    $user_id = get_user_id();
+
+    if ($user_id == null) {
+        return $data['error'] = 'Something went wrong while fetching products.';
+    }
+
+    $stmt = $con->prepare("SELECT * FROM cart where user_id = ?");
+    $stmt->bind_param('i', $user_id);
     if ($stmt->execute()) :
         $result = $stmt->get_result();
 

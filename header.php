@@ -34,7 +34,16 @@ require "functions.php";
                         <button type="button" class="btn btn-light">
                             <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>
                         </button>
-
+                        <button type="button" class="btn btn-primary">
+                            <li><a href="login.php" class="text-decoration-none text-white">Login</a></li>
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <li><a href="signup.php" class="text-decoration-none text-white">Sign Up</a></li>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <li><a href="logout.php" class="text-decoration-none text-white">Logout</a></li>
+                        </button>
+                        
                     </ul>
                 </div>
             </div>

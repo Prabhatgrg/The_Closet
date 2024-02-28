@@ -82,7 +82,7 @@ require 'header.php'; ?>
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                    <input type="number" name="cart_qty" value="0">
+                                    <input type="number" name="cart_qty" value="1">
                                     <button class="btn btn-primary mt-3" type="submit">Add to cart</button>
                                 </form>
                             </div>

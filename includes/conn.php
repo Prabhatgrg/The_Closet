@@ -1,8 +1,4 @@
 <?php
-define('DB_NAME', 'the_closet');
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
 
 function open_con()
 {
@@ -11,6 +7,7 @@ function open_con()
     if ($conn->connect_error) {
         die("Connection Failed: " . $conn->connect_error);
     }
+    echo "connection success";
     return $conn;
 }
 

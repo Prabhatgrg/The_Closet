@@ -62,7 +62,7 @@ function add_product($product_title, $product_price, $product_code, $product_ima
 
     $pname = rand(1000, 10000) . '-' . $product_image['name'];
     $tname = $product_image['tmp_name'];
-    $upload_dir = 'uploads';
+    $upload_dir = 'uploads/';
     move_uploaded_file($tname, $upload_dir . $pname);
 
     $stmt = $con->prepare("INSERT INTO products(product_title, product_price, product_code, product_image)VALUES(?, ?, ?, ?)");

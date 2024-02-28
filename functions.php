@@ -6,3 +6,4 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 require_once './includes/conn.php';
+require_once './includes/products.php';

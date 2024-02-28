@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-    <header class="bg-gray py-4">
+    <header class="bg-gray pt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -39,3 +39,4 @@ session_start();
 
         </div>
     </header>
+    <hr>

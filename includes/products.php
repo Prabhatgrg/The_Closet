@@ -71,7 +71,7 @@ function add_product($product_title, $product_price, $product_code, $product_ima
         $message['success'] = 'Product Added Successfully';
     else:
         $message['error'] = 'Error Adding Product';
-
+    endif;
 }
 
 function clear_cart()

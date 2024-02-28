@@ -66,7 +66,7 @@ function add_product($product_title, $product_price, $product_code, $product_ima
     move_uploaded_file($tname, $upload_dir . $pname);
 
     $stmt = $con->prepare("INSERT INTO products(product_title, product_price, product_code, product_image)VALUES(?, ?, ?, ?)");
-    $stmt->bind_param("siss",$product_title, $product_price, $product_code, $product_image);
+    $stmt->bind_param("siss",$product_title, $product_price, $product_code, $pname);
     if($stmt->execute()):
         $message['success'] = 'Product Added Successfully';
     else:

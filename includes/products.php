@@ -6,7 +6,12 @@ function get_products()
     $stmt = $con->prepare("SELECT * FROM products");
     if ($stmt->execute()) :
         $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
+
+        if ($result->num_rows > 0) :
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+        else :
+            $data['error'] = 'There are no producsts.';
+        endif;
     else :
         $data['error'] = 'Something went wrong while fetching products.';
     endif;
@@ -21,7 +26,12 @@ function get_cart_products()
     $stmt = $con->prepare("SELECT * FROM cart");
     if ($stmt->execute()) :
         $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
+
+        if ($result->num_rows > 0) :
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+        else :
+            $data['error'] = 'Your cart is empty.';
+        endif;
     else :
         $data['error'] = 'Something went wrong while fetching products.';
     endif;

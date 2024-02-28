@@ -32,12 +32,12 @@ require 'header.php'; ?>
                             ?>
 
                                 <tr>
-                                    <td><img class="rounded-circle" src="" alt=""> <?php echo $product['title'] ?></td>
-                                    <td><?php echo $product['code'] ?></td>
+                                    <td><img class="rounded-circle" src="<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
+                                    <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
-                                    <td><?php echo $cart_product['price'] ?></td>
+                                    <td><?php echo $cart_product['cart_price'] ?></td>
                                     <td><?php echo $cart_product['total_price'] ?></td>
-                                    <td><a href="?remove=<?php echo $cart_product['id'] ?>" class="btn-close" aria-label="Close"><span class="d-none">close</span></a></td>
+                                    <td><a href="?remove=<?php echo $cart_product['cart_id'] ?>" class="btn-close" aria-label="Close"><span class="d-none">close</span></a></td>
                                 </tr>
 
                             <?php endforeach; ?>
@@ -73,7 +73,19 @@ require 'header.php'; ?>
                 ?>
 
                     <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
+                                <span class="fs-6">Rs. <?php echo $product['product_price']; ?></span>
 
+                                <form action="add_to_cart.php">
+                                    <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
+                                    <input type="number" name="cart_qty" value="0">
+                                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 <?php endforeach; ?>

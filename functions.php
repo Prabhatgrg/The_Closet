@@ -6,4 +6,8 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 require_once './includes/conn.php';
+require_once './includes/users.php';
 require_once './includes/products.php';
+
+$con = open_con();
+session_start();

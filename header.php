@@ -1,8 +1,5 @@
 <?php
 require "functions.php";
-
-$con = open_con();
-session_start();
 ?>
 
 

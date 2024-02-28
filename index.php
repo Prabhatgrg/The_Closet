@@ -32,7 +32,7 @@ require 'header.php'; ?>
                             ?>
 
                                 <tr>
-                                    <td><img class="rounded-circle" src="<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
+                                    <td><img class="rounded-circle" src="./uploads/<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
                                     <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
                                     <td><?php echo $cart_product['cart_price'] ?></td>
@@ -74,16 +74,16 @@ require 'header.php'; ?>
 
                     <div class="col-md-6 col-lg-3">
                         <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="./uploads/<?php echo $product['product_image']; ?>" class="card-img-top" alt="<?php echo $product['product_title'] ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
-                                <span class="fs-6">Rs. <?php echo $product['product_price']; ?></span>
+                                <span class="fs-6 d-inline-block mb-3">Rs. <?php echo $product['product_price']; ?></span>
 
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                     <input type="number" name="cart_qty" value="0">
-                                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                                    <button class="btn btn-primary mt-3" type="submit">Add to cart</button>
                                 </form>
                             </div>
                         </div>

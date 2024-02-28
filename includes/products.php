@@ -55,46 +55,6 @@ function get_product_by_id($product_id)
     return $data;
 }
 
-function move_uploaded_post_images($file_array)
-{
-    $file_data_array = array(); // Array to store file data
-
-    foreach ($file_array as $file) {
-        // File details
-        $file_name = rand(1000, 10000) . '-' . $file['name'];
-        $file_tmp = $file['tmp_name'];
-        $file_size = $file['size'];
-        $file_type = $file['type'];
-
-        // Move uploaded file to desired location (optional)
-        $upload_dir = "frontend/uploads/";
-        $file_path = $upload_dir . $file_name;
-        move_uploaded_file($file_tmp, $file_path);
-
-        // Store file details in array
-        $file_data = array("name" => $file_name, "path" => $file_path);
-        $file_data_array[] = $file_data;
-    }
-
-    // Encode file data array as JSON
-    return $json_file_data = json_encode($file_data_array);
-}
-
-function reorganize_files_array($files)
-{
-    $file_array = array();
-    $file_count = count($files['name']);
-    $file_keys = array_keys($files);
-
-    for ($i = 0; $i < $file_count; $i++) {
-        foreach ($file_keys as $key) {
-            $file_array[$i][$key] = $files[$key][$i];
-        }
-    }
-
-    return $file_array;
-}
-
 function add_product($product_title, $product_price, $product_code, $product_image){
     global $con;
 

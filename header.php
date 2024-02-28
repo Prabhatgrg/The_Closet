@@ -31,8 +31,13 @@ session_start();
                 </div>
                 <div class="col-md-7">
                     <ul class="list-unstyled d-flex justify-content-end gap-4">
-                        <li><a href="add_product.php">Add Product</a></li>
-                        <li><a href="cart.php">Cart</a></li>
+                        <button type="button" class="btn btn-light">
+                            <li><a href="index.php" class="text-decoration-none">Home</a></li>
+                        </button>
+                        <button type="button" class="btn btn-light">
+                            <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>
+                        </button>
+
                     </ul>
                 </div>
             </div>

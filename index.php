@@ -65,11 +65,11 @@ require 'header.php'; ?>
             </div>
 
             <?php
-            $cart_products = get_cart_products();
-            if (!isset($cart_products['error'])) : ?>
+            $products = get_products();
+            if (!isset($products['error'])) : ?>
 
-                <?php foreach ($cart_products as $cart_product) :
-                    $product = get_product_by_id($cart_product['product_id']);
+                <?php foreach ($products as $product) :
+
                 ?>
 
                     <div class="col-md-6 col-lg-3">
@@ -81,6 +81,7 @@ require 'header.php'; ?>
 
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
+                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                     <input type="number" name="cart_qty" value="0">
                                     <button class="btn btn-primary" type="submit">Add to cart</button>
                                 </form>

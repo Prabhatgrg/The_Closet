@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `products`(
     `product_id` INT PRIMARY KEY AUTO_INCREMENT,
     `product_title` VARCHAR(255) NOT NULL,
     `product_price` DECIMAL(10, 2) NOT NULL,
-    `product_code` INT(255) NOT NULL,
+    `product_code` VARCHAR(255) NOT NULL,
     `product_image` VARCHAR(255) NOT NULL
 );
 

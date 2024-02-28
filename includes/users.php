@@ -19,24 +19,39 @@ function is_login()
     endif;
 }
 
-function user_auth($username, $password){
+function check_if_login()
+{
+    if (!is_login()) :
+        header('Location: index.php');
+    endif;
+}
+
+function logout()
+{
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
+}
+
+function user_auth($username, $password)
+{
     global $con;
 
     $message = [];
-    
+
     $stmt = $con->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param('s', $username);
-    if($stmt->execute()):
+    if ($stmt->execute()) :
         $result = $stmt->get_result();
-        if($result->num_rows == 0):
+        if ($result->num_rows == 0) :
             $message['usermsg'] = 'Username does not exists';
-        else:
+        else :
             $user = $result->fetch_array(MYSQLI_ASSOC);
-            if($user['username'] == $username && password_verify($password, $user['password'])):
+            if ($user['username'] == $username && password_verify($password, $user['password'])) :
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['username'];
-                header('Location: index.php' );
-            else:
+                header('Location: index.php');
+            else :
                 $message['error'] = 'Incorrect username or password';
             endif;
         endif;

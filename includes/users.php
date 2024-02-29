@@ -10,6 +10,26 @@ function get_user_id()
     return null;
 }
 
+function is_admin() {
+    global $con;
+
+    $stmt = $con->prepare("SELECT * FROM user_roles WHERE user_id = ?");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    if($stmt->execute()):
+        $result = $stmt->get_result();
+        if($result->num_rows == 0):
+            return false;
+        endif;
+
+        $data = $result->fetch_array(MYSQLI_ASSOC);
+        if($data['user_role'] == 'admin'):
+            return true;
+        else:
+            return false;
+        endif;
+    endif;
+}
+
 function is_login()
 {
     if (isset($_SESSION['user_id'])) :

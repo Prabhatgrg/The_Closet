@@ -40,9 +40,11 @@ require "functions.php";
                             </button>
                         <?php endif; ?>
                         <?php if (is_login()) : ?>
-                            <button type="button" class="btn btn-light">
-                                <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>
-                            </button>
+                            <?php if (is_admin()) : ?>
+                                <button type="button" class="btn btn-light">
+                                    <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>
+                                </button>
+                            <?php endif; ?>
                             <button type="button" class="btn btn-danger">
                                 <li><a href="logout.php" class="text-decoration-none text-white">Logout</a></li>
                             </button>

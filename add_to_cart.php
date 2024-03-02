@@ -2,9 +2,9 @@
 require_once "functions.php";
 $user_id = get_user_id();
 
-if ($user_id == null) {
-    echo '<script>alert("Please login.")</script>';
-    header("Location: index.php");
+if (!is_login()) {
+    echo '<script>alert("Please Login")</script>';
+    header('Location: index.php');
 }
 
 if (isset($_GET['cart_qty'])) :

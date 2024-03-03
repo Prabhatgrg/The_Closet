@@ -148,3 +148,13 @@ function remove_cart($cart_id)
     endif;
     header("Location: index.php");
 }
+
+function check_cart() {
+    global $con;
+
+    $stmt = $con->prepare("SELECT * FROM cart WHERE user_id = ?");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    if($stmt->execute()):
+        return true;
+    endif;
+}

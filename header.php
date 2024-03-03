@@ -31,6 +31,7 @@ require "functions.php";
                         <button type="button" class="btn btn-light">
                             <li><a href="index.php" class="text-decoration-none">Home</a></li>
                         </button>
+
                         <?php if (!is_login()) : ?>
                             <button type="button" class="btn btn-primary">
                                 <li><a href="login.php" class="text-decoration-none text-white">Login</a></li>
@@ -40,6 +41,9 @@ require "functions.php";
                             </button>
                         <?php endif; ?>
                         <?php if (is_login()) : ?>
+                            <button type="button" class="btn btn-light">
+                                <li><a href="cart.php" class="text-decoration-none">Cart</a></li>
+                            </button>
                             <?php if (is_admin()) : ?>
                                 <button type="button" class="btn btn-light">
                                     <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>

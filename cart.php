@@ -34,9 +34,13 @@ require 'header.php'; ?>
 
                         <tbody>
 
-                            <?php foreach ($cart_products as $cart_product) :
+                            <?php
+                            $grand_total = 0;
+
+                            foreach ($cart_products as $cart_product) :
                                 $total = 0;
                                 $total += $cart_product['total_price'];
+                                $grand_total += $total;
                                 $product = get_product_by_id($cart_product['product_id']);
                             ?>
 
@@ -56,16 +60,25 @@ require 'header.php'; ?>
 
                             <?php endforeach; ?>
 
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Total (NPR)</span>
-                                <strong>Rs.<?php echo number_format($total, 2); ?></strong>
-                            </li>
 
-                            <form action="checkout.php" method="POST">
-
-                            </form>
 
                         </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <th colspan="1">Total (NPR)</th>
+                                <td colspan="2">
+                                    Rs.<?php echo number_format($grand_total, 2); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td colspan="2">
+                                    <a href="checkout.php" class="btn btn-primary">Checkout</a>
+                                </td>
+                            </tr>
+                        </tfoot>
 
                     </table>
 

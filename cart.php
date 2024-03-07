@@ -35,6 +35,8 @@ require 'header.php'; ?>
                         <tbody>
 
                             <?php foreach ($cart_products as $cart_product) :
+                                $total = 0;
+                                $total += $cart_product['total_price'];
                                 $product = get_product_by_id($cart_product['product_id']);
                             ?>
 
@@ -43,7 +45,7 @@ require 'header.php'; ?>
                                     <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
                                     <td>Rs. <?php echo $cart_product['cart_price'] ?></td>
-                                    <td>Rs. <?php echo $cart_product['total_price'] ?></td>
+                                    <td>Rs. <?php echo $total ?></td>
                                     <td>
                                         <a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close btn-close-white" aria-label="Close">
                                             <span class="d-none">close</span>
@@ -53,6 +55,15 @@ require 'header.php'; ?>
                                 </tr>
 
                             <?php endforeach; ?>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total (NPR)</span>
+                                <strong>Rs.<?php echo number_format($total, 2); ?></strong>
+                            </li>
+
+                            <form action="checkout.php" method="POST">
+
+                            </form>
 
                         </tbody>
 

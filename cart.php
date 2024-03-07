@@ -20,15 +20,15 @@ require 'header.php'; ?>
                 $cart_products = get_cart_products();
                 if (!isset($cart_products['error'])) : ?>
 
-                    <table class="table table-hover">
+                    <table class="table table-hover table-striped table-dark mt-2">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Code</th>
                                 <th>Quantity</th>
-                                <th>Unit price</th>
                                 <th>Price</th>
-                                <th>Remove</th>
+                                <th>Total Price</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
 
@@ -42,9 +42,14 @@ require 'header.php'; ?>
                                     <td><img style="width: 4rem; aspect-ratio: 1; object-fit-cover;" class="rounded-circle me-2" src="./uploads/<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
                                     <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
-                                    <td><?php echo $cart_product['cart_price'] ?></td>
-                                    <td><?php echo $cart_product['total_price'] ?></td>
-                                    <td><a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close" aria-label="Close"><span class="d-none">close</span></a></td>
+                                    <td>Rs. <?php echo $cart_product['cart_price'] ?></td>
+                                    <td>Rs. <?php echo $cart_product['total_price'] ?></td>
+                                    <td>
+                                        <a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close btn-close-white" aria-label="Close">
+                                            <span class="d-none">close</span>
+                                        </a>
+                                    </td>
+                                    <!-- <td><a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close btn-close-white" aria-label="Close"><span class="d-none">close</span></a></td> -->
                                 </tr>
 
                             <?php endforeach; ?>

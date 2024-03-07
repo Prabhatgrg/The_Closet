@@ -33,4 +33,15 @@ function get_order_by_id($order_id){
     return $data;
 }
 
+function update_qty($cart_id, $cart_qty){
+    global $con;
+
+    $stmt = $con->prepare("UPDATE cart SET cart_qty = $cart_qty WHERE cart_id = $cart_id");
+    if($stmt->execute()):
+        return true;
+    else:
+        return false;
+    endif;
+}
+
 ?>

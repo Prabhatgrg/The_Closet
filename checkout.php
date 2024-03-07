@@ -44,7 +44,7 @@ require 'header.php';
                     ?>
                     <li class="list-group-item d-flex justify-content-between list-item-total">
                         <h5>Total Price: </h5>
-                        <h5>$<?php echo $grand_total; ?></h5>
+                        <h5>Rs. <?php echo $grand_total; ?></h5>
                     </li>
                 </ul>
             </div>

@@ -16,7 +16,7 @@ require 'header.php';
                     $grand_total = 0;
                     $cart_products = get_cart_products();
                     if (!isset($cart_products['error'])) :
-                        $index = 0;
+                        $index = 1;
                         foreach ($cart_products as $cart_product) :
                             // $total = 0;
                             $price = $cart_product['cart_price'] * $cart_product['cart_qty'];
@@ -59,7 +59,7 @@ require 'header.php';
 
 
                         <!-- PayPal form fields -->
-                        <input type="hidden" name="business" value="sb-jkj1q29795820@business.example.com">
+                        <input type="hidden" name="business" value="sb-sbfqo29531482@business.example.com">
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="upload" value="1">
                         <input type="hidden" name="currency_code" value="USD">

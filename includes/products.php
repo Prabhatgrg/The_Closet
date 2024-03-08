@@ -158,3 +158,36 @@ function check_cart() {
         return true;
     endif;
 }
+
+// function to check if post is booked or not
+function is_wishlisted($product_id)
+{
+    global $con;
+
+    $stmt = $con->prepare("SELECT * FROM wishlist WHERE product_id = ? AND user_id = ?");
+    $stmt->bind_param('ii', $product_id, $_SESSION['user_id']);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0)
+        return true;
+    return false;
+}
+
+function wishlist($product_id){
+    global $con;
+
+    $message = [];
+    $is_wishlisted = is_wishlisted($product_id, $_SESSION['user_id']);
+
+    if($is_wishlisted):
+        $message['error'] = 'The product is already on your wishlist';
+    else:
+        $stmt = $con->prepare("INSERT INTO wishlist(user_id, product_id) VALUES(?, ?)");
+        $stmt->bind_param("ii", $product_id, $_SESSION['user_id']);
+        $message['error'] = 'There is an error wishlisting the product';
+    endif;
+
+    return $message;
+}

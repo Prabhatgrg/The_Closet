@@ -5,22 +5,6 @@ CREATE TABLE IF NOT EXISTS `users`(
     `password` varchar(100) NOT NULL
 );
 
-INSERT INTO
-    `users` (`user_id`, `fullname`, `username`, `password`)
-VALUES
-    (
-        1,
-        'Prabhat Gurung',
-        'prabhatgrg',
-        '123'
-    ),
-    (
-        2,
-        'Neer Shrestha',
-        'neersth',
-        '123'
-    );
-
 CREATE TABLE IF NOT EXISTS `products`(
     `product_id` INT PRIMARY KEY AUTO_INCREMENT,
     `product_title` VARCHAR(255) NOT NULL,
@@ -35,16 +19,6 @@ CREATE TABLE IF NOT EXISTS `user_roles`(
     `user_role` VARCHAR(20) DEFAULT 'user',
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
-
-INSERT INTO
-    `user_roles`(
-        `role_id`,
-        `user_id`,
-        `user_role`
-    )
-VALUES
-    (1, 1, 'admin'),
-    (2, 2, 'user');
 
 CREATE TABLE IF NOT EXISTS `cart`(
     `cart_id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,4 +48,12 @@ CREATE TABLE IF NOT EXISTS `order_product`(
     `product_quantity` VARCHAR(255) DEFAULT NULL,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(product_id) REFERENCES products(product_id)
+);
+
+CREATE TABLE IF NOT EXISTS `wishlist`(
+    `wishlist_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `user_id` INT NOT NULL,
+    `product_id` INT NOT NULL, 
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 );

@@ -14,7 +14,7 @@ require 'header.php';
                     $grand_total = 0;
                     $cart_products = get_cart_products();
                     if (!isset($cart_products['error'])) :
-                        $index = 0;
+                        $index = 1;
                         foreach ($cart_products as $cart_product) :
                             // $total = 0;
                             $price = $cart_product['cart_price'] * $cart_product['cart_qty'];

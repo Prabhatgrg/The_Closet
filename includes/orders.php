@@ -43,5 +43,3 @@ function update_qty($cart_id, $cart_qty){
         return false;
     endif;
 }
-
-?>

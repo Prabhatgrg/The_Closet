@@ -123,7 +123,7 @@ if ($row_check['num_rows'] == 0) {
             </tbody>
         </table>
 
-
+        <?php clear_cart(); ?>
 
     </div>
 </section>

@@ -13,16 +13,14 @@ require 'header.php';
                     <?php
 
 
+
                     $grand_total = 0;
                     $cart_products = get_cart_products();
                     if (!isset($cart_products['error'])) :
                         $index = 1;
                         foreach ($cart_products as $cart_product) :
-                            // $total = 0;
                             $price = $cart_product['cart_price'] * $cart_product['cart_qty'];
                             $grand_total += $price;
-
-
 
                             $product = get_product_by_id($cart_product['product_id']);
                     ?>
@@ -37,6 +35,7 @@ require 'header.php';
 
                                 <!-- Include hidden input fields for each item -->
                                 <input type="hidden" name="item_name_<?php echo $index; ?>" value="<?php echo $product['product_title']; ?>">
+                                <input type="hidden" name="cart_id_<?php echo $index; ?>" value="<?php echo $cart_product['cart_id']; ?>">
                                 <input type="hidden" name="item_number_<?php echo $index; ?>" value="<?php echo $product['product_id']; ?>">
                                 <input type="hidden" name="amount_<?php echo $index; ?>" value="<?php echo $cart_product['cart_price']; ?>">
                                 <input type="hidden" name="quantity_<?php echo $index; ?>" value="<?php echo $cart_product['cart_qty']; ?>">

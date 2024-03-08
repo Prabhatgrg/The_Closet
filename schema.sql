@@ -75,3 +75,18 @@ CREATE TABLE IF NOT EXISTS `order_product`(
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
+
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE IF NOT EXISTS `payments` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `payer_name` text NOT NULL,
+    `payer_email` text NOT NULL,
+    `address` text NOT NULL,
+    `product_id` text NOT NULL,
+    `product_title` text NOT NULL,
+    `quantity` text NOT NULL,
+    `amount` text NOT NULL,
+    `status` text NOT NULL,
+    `created_at` text NOT NULL,
+    PRIMARY KEY (`id`)
+);

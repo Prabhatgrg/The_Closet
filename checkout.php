@@ -11,14 +11,12 @@ require 'header.php';
                 </div>
                 <ul class="list-group mb-4">
                     <?php
-
-
-
                     $grand_total = 0;
                     $cart_products = get_cart_products();
                     if (!isset($cart_products['error'])) :
-                        $index = 1;
+                        $index = 0;
                         foreach ($cart_products as $cart_product) :
+                            // $total = 0;
                             $price = $cart_product['cart_price'] * $cart_product['cart_qty'];
                             $grand_total += $price;
 
@@ -31,18 +29,14 @@ require 'header.php';
                                     <span><?php echo $cart_product['cart_qty']; ?></span>
                                     <span><?php echo $cart_product['cart_price']; ?></span>
                                 </span>
-                                <strong>Rs <?php echo $price; ?></strong>
+                                <strong>$ <?php echo $price; ?></strong>
 
                                 <!-- Include hidden input fields for each item -->
                                 <input type="hidden" name="item_name_<?php echo $index; ?>" value="<?php echo $product['product_title']; ?>">
-                                <input type="hidden" name="cart_id_<?php echo $index; ?>" value="<?php echo $cart_product['cart_id']; ?>">
                                 <input type="hidden" name="item_number_<?php echo $index; ?>" value="<?php echo $product['product_id']; ?>">
                                 <input type="hidden" name="amount_<?php echo $index; ?>" value="<?php echo $cart_product['cart_price']; ?>">
                                 <input type="hidden" name="quantity_<?php echo $index; ?>" value="<?php echo $cart_product['cart_qty']; ?>">
                             </li>
-
-
-
                     <?php
                             $index++;
                         endforeach;
@@ -53,12 +47,10 @@ require 'header.php';
                     ?>
                     <li class="list-group-item d-flex justify-content-between list-item-total">
                         <h5>Total Price: </h5>
-                        <h5>Rs. <?php echo $grand_total; ?></h5>
-
-
+                        <h5>$ <?php echo $grand_total; ?></h5>
 
                         <!-- PayPal form fields -->
-                        <input type="hidden" name="business" value="sb-sbfqo29531482@business.example.com">
+                        <input type="hidden" name="business" value="sb-yzu3x29802408@business.example.com">
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="upload" value="1">
                         <input type="hidden" name="currency_code" value="USD">

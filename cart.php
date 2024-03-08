@@ -48,8 +48,8 @@ require 'header.php'; ?>
                                     <td><img style="width: 4rem; aspect-ratio: 1; object-fit-cover;" class="rounded-circle me-2" src="./uploads/<?php echo $product['product_image']; ?>" alt="<?php echo $product['product_title'] ?>"> <?php echo $product['product_title'] ?></td>
                                     <td><?php echo $product['product_code'] ?></td>
                                     <td><?php echo $cart_product['cart_qty'] ?></td>
-                                    <td>Rs. <?php echo $cart_product['cart_price'] ?></td>
-                                    <td>Rs. <?php echo $total ?></td>
+                                    <td>$ <?php echo $cart_product['cart_price'] ?></td>
+                                    <td>$ <?php echo $total ?></td>
                                     <td>
                                         <a href="remove_cart.php?cart_id=<?php echo $cart_product['cart_id'] ?>" class="btn-close btn-close-white" aria-label="Close">
                                             <span class="d-none">close</span>
@@ -69,7 +69,7 @@ require 'header.php'; ?>
                                 <td colspan="3"></td>
                                 <th colspan="1">Total (NPR)</th>
                                 <td colspan="2">
-                                    Rs.<?php echo number_format($grand_total, 2); ?>
+                                    $ <?php echo number_format($grand_total, 2); ?>
                                 </td>
                             </tr>
                             <tr>

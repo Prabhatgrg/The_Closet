@@ -40,7 +40,7 @@ endif;
                             <img src="./uploads/<?php echo $product['product_image']; ?>" class="card-img-top" alt="<?php echo $product['product_title'] ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
-                                <span class="fs-6 d-inline-block mb-3">Rs. <?php echo $product['product_price']; ?></span>
+                                <span class="fs-6 d-inline-block mb-3">$ <?php echo $product['product_price']; ?></span>
 
                                 <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php if (is_wishlisted($product['product_id'], $_SESSION['user_id'])) : echo 'class="saved"';
                                                                                                                                                                     endif; ?> aria-label="wishlist link">

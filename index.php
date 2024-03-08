@@ -13,7 +13,7 @@ require 'header.php'; ?>
             if (!isset($products['error'])) : ?>
 
                 <?php foreach ($products as $product) :
-
+                    $is_wishlisted = is_wishlisted($product['product_id'], $_SESSION['user_id']) ? 'false' : 'true';
                 ?>
 
                     <div class="col-md-6 col-lg-3">
@@ -23,6 +23,12 @@ require 'header.php'; ?>
                                 <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
                                 <span class="fs-6 d-inline-block mb-3">Rs. <?php echo $product['product_price']; ?></span>
 
+                                <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php echo is_wishlisted($product['product_id'], $_SESSION['user_id']) ? 'class="saved"' : null; ?> aria-label="wishlist link">
+                                    <svg width="50" height="20" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                                    </svg>
+                                </a>
+
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
@@ -31,6 +37,7 @@ require 'header.php'; ?>
                                         <button class="btn btn-primary ms-3 flex-shrink-0 " type="submit">Add to cart</button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>

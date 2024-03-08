@@ -28,12 +28,11 @@ require 'header.php';
                 $sql = "SELECT * FROM payments WHERE status = 'Completed'";
                 $result = $con->query($sql);
 
-                $totalAmount = 0; // Initialize total amount outside the loop
+                $totalAmount = 0;
                 $i = 1;
 
-                if ($result->num_rows > 0) {
+                if ($result->num_rows > 0) :
                     while ($row = $result->fetch_assoc()) {
-                        // Display each product row
                 ?>
                         <tr>
                             <td><?php echo $i ?></td>
@@ -52,15 +51,12 @@ require 'header.php';
                         <td><strong><?php echo "$" . number_format($totalAmount, 2); ?></strong></td>
                     </tr>
                 <?php
-                } else {
+                else :
                     echo "<tr><td colspan='4'>No records found</td></tr>";
-                }
+                endif;
                 ?>
 
             </tbody>
         </table>
-
-        <?php clear_cart(); ?>
-
     </div>
 </section>

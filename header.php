@@ -20,7 +20,6 @@ require "functions.php";
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-
                     <h1 class="fs-5 mb-0">
                         Name :
                     </h1>
@@ -44,7 +43,7 @@ require "functions.php";
                             <button type="button" class="btn btn-light">
                                 <li><a href="cart.php" class="text-decoration-none">Cart</a></li>
                             </button>
-                            <a href="orders.php" class="me-2 btn btn-danger">View my orders</a>
+                            <a href="view_orders.php" class="me-2 btn btn-danger">View my orders</a>
                             <?php if (is_admin()) : ?>
                                 <button type="button" class="btn btn-light">
                                     <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>

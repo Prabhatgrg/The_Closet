@@ -1,5 +1,24 @@
 <?php
-require 'header.php'; ?>
+require 'header.php';
+
+if (isset($_GET['wishlist'])) :
+    switch ($_GET['wishlist']):
+        case 'true':
+            $wishlist_message = wishlist($_GET['product_id'], $_SESSION['user_id']);
+            echo '<script>alert("This product is added.");document.location.href = "index.php"</script>';
+            break;
+        case 'false':
+            $wishlist_message = remove_wishlist($_GET['product_id'], $_SESSION['user_id']);
+            echo '<script>alert("The wishlist is removed.");document.location.href = "index.php"</script>';
+            break;
+        default:
+            break;
+    endswitch;
+
+endif;
+
+
+?>
 
 <section class="products py-4">
     <div class="container">
@@ -23,7 +42,7 @@ require 'header.php'; ?>
                                 <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
                                 <span class="fs-6 d-inline-block mb-3">Rs. <?php echo $product['product_price']; ?></span>
 
-                                <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php echo is_wishlisted($product['product_id'], $_SESSION['user_id']) ? 'class="saved"' : null; ?> aria-label="wishlist link">
+                                <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php echo $is_wishlisted ? 'class="saved"' : null; ?> aria-label="wishlist link">
                                     <svg width="50" height="20" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>

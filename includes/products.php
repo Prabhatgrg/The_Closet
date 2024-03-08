@@ -1,20 +1,6 @@
 <?php
 
-if (isset($_GET['bookmark'])) :
-    switch ($_GET['bookmark']):
-        case 'true':
-            $wishlist_message = wishlist($_GET['product_id'], $_SESSION['user_id']);
-            echo '<script>alert("This post is saved.");document.location.href = "post?id=' . urlencode($_GET['product_id']) . '"</script>';
-            break;
-        case 'false':
-            $wishlist_message = remove_wishlist($produc_id, $_SESSION['user_id']);
-            echo '<script>alert("The saved post is removed.");document.location.href = "post?id=' . urlencode($_GET['product_id']) . '"</script>';
-            break;
-        default:
-            break;
-    endswitch;
 
-endif;
 
 function get_products()
 {
@@ -166,12 +152,13 @@ function remove_cart($cart_id)
     header("Location: index.php");
 }
 
-function check_cart() {
+function check_cart()
+{
     global $con;
 
     $stmt = $con->prepare("SELECT * FROM cart WHERE user_id = ?");
     $stmt->bind_param("i", $_SESSION['user_id']);
-    if($stmt->execute()):
+    if ($stmt->execute()) :
         return true;
     endif;
 }
@@ -182,48 +169,51 @@ function is_wishlisted($product_id, $user_id)
     global $con;
 
     $stmt = $con->prepare("SELECT * FROM wishlist WHERE product_id = ? AND user_id = ?");
-    $stmt->bind_param('ii', $product_id, $user_);
+    $stmt->bind_param('ii', $product_id, $user_id);
 
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0)
+    if ($result->num_rows > 0) {
         return true;
+    }
     return false;
 }
 
-function wishlist($product_id){
+function wishlist($product_id)
+{
     global $con;
 
     $message = [];
     $is_wishlisted = is_wishlisted($product_id, $_SESSION['user_id']);
 
-    if($is_wishlisted):
+    if ($is_wishlisted) :
         $message['error'] = 'The product is already on your wishlist';
-    else:
+    else :
         $stmt = $con->prepare("INSERT INTO wishlist(user_id, product_id) VALUES(?, ?)");
         $stmt->bind_param("ii", $product_id, $_SESSION['user_id']);
+        $stmt->execute();
         $message['error'] = 'There is an error wishlisting the product';
     endif;
 
     return $message;
 }
 
-function remove_wishlist($product_id)
+function remove_wishlist($product_id, $user_id)
 {
-    global $conn;
+    global $con;
 
     $message = [];
 
-    $is_wishlisted = is_wishlisted($product_id, $_SESSION['user_id']);
+    $is_wishlisted = is_wishlisted($product_id, $user_id);
 
     if (!$is_wishlisted) {
         $message['error'] = "This post is already not saved.";
         return $message;
     }
 
-    $stmt = $conn->prepare("DELETE FROM wislist WHERE product_id = ? AND user_id = ?");
-    $stmt->bind_param('ii', $product_id, $_SESSION['user_id']);
+    $stmt = $con->prepare("DELETE FROM wishlist WHERE product_id = ? AND user_id = ?");
+    $stmt->bind_param('ii', $product_id, $user_id);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully removed from saved list.';
     else :

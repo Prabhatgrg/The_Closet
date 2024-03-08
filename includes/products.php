@@ -177,12 +177,12 @@ function check_cart() {
 }
 
 // function to check if post is booked or not
-function is_wishlisted($product_id)
+function is_wishlisted($product_id, $user_id)
 {
     global $con;
 
     $stmt = $con->prepare("SELECT * FROM wishlist WHERE product_id = ? AND user_id = ?");
-    $stmt->bind_param('ii', $product_id, $_SESSION['user_id']);
+    $stmt->bind_param('ii', $product_id, $user_);
 
     $stmt->execute();
     $result = $stmt->get_result();

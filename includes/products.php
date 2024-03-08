@@ -180,18 +180,18 @@ function is_wishlisted($product_id, $user_id)
     return false;
 }
 
-function wishlist($product_id)
+function wishlist($product_id, $user_id)
 {
     global $con;
 
     $message = [];
-    $is_wishlisted = is_wishlisted($product_id, $_SESSION['user_id']);
+    $is_wishlisted = is_wishlisted($product_id, $user_id);
 
     if ($is_wishlisted) :
         $message['error'] = 'The product is already on your wishlist';
     else :
         $stmt = $con->prepare("INSERT INTO wishlist(user_id, product_id) VALUES(?, ?)");
-        $stmt->bind_param("ii", $product_id, $_SESSION['user_id']);
+        $stmt->bind_param("ii", $user_id, $product_id);
         $stmt->execute();
         $message['error'] = 'There is an error wishlisting the product';
     endif;

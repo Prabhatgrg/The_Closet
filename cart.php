@@ -67,7 +67,7 @@ require 'header.php'; ?>
                         <tfoot>
                             <tr>
                                 <td colspan="3"></td>
-                                <th colspan="1">Total (NPR)</th>
+                                <th colspan="1">Total (USD)</th>
                                 <td colspan="2">
                                     $ <?php echo number_format($grand_total, 2); ?>
                                 </td>

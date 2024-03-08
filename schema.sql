@@ -71,3 +71,9 @@ CREATE TABLE IF NOT EXISTS `wishlist`(
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+INSERT INTO `payments` (`id`, `payer_name`, `payer_email`, `address`, `product_id`, `product_title`, `quantity`, `amount`, `status`, `created_at`) VALUES
+(1, 'John Doe', 'sb-qsreg29802442@personal.example.com', '1 Main St, San Jose, CA, US, 95131', '', 'payer', '1', '755.00', '', '2024-02-29T11:20:07Z'),
+(2, 'John Doe', 'sb-qsreg29802442@personal.example.com', '1 Main St, San Jose, CA, US, 95131', '3', 'Adipisicing nemo dol', '1', '1178.00', '', '2024-02-29T13:17:48Z'),
+(3, 'John Doe', 'sb-qsreg29802442@personal.example.com', '1 Main St, San Jose, CA, US, 95131', '3', 'Adipisicing nemo dol', '1', '1178.00', '', '2024-02-29T13:34:25Z'),
+(4, 'John Doe', 'sb-qsreg29802442@personal.example.com', '1 Main St, San Jose, CA, US, 95131', '3', 'Adipisicing nemo dol', '1', '1178.00', '', '2024-02-29T13:37:42Z');

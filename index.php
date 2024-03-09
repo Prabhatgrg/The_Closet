@@ -32,8 +32,8 @@ endif;
             if (!isset($products['error'])) : ?>
 
                 <?php foreach ($products as $product) :
-                    if(is_login()) :
-                    $is_wishlisted = is_wishlisted($product['product_id'], $_SESSION['user_id']) ? 'false' : 'true';
+                    if (is_login()) :
+                        $is_wishlisted = is_wishlisted($product['product_id'], $_SESSION['user_id']) ? 'false' : 'true';
                     endif;
                 ?>
 
@@ -42,16 +42,19 @@ endif;
                             <img src="./uploads/<?php echo $product['product_image']; ?>" class="card-img-top" alt="<?php echo $product['product_title'] ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $product['product_title']; ?></h5>
-                                <span class="fs-6 d-inline-block mb-3">$ <?php echo $product['product_price']; ?></span>
+                                <div class="d-flex justify-content-between">
+                                    <span class="fs-6 d-inline-block mb-3">$ <?php echo $product['product_price']; ?></span>
 
-                                <?php if (is_login()) : ?>
-                                    <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php if (is_wishlisted($product['product_id'], $_SESSION['user_id'])) : echo 'class="saved"';
-                                                                                                                                                                        endif; ?> aria-label="wishlist link">
-                                        <svg width="50" height="20" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
-                                        </svg>
-                                    </a>
-                                <?php endif; ?>
+                                    <?php if (is_login()) : ?>
+                                        <a href="index.php?product_id=<?php echo urlencode($product['product_id']); ?>&wishlist=<?php echo urlencode($is_wishlisted); ?>" <?php if (is_wishlisted($product['product_id'], $_SESSION['user_id'])) : echo 'class="saved"';
+                                                                                                                                                                            endif; ?> aria-label="wishlist link">
+                                            <svg width="50" height="20" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
+
+                                </div>
                                 <form action="add_to_cart.php">
                                     <input type="hidden" name="cart_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">

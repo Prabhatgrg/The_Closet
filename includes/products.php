@@ -120,9 +120,9 @@ function add_to_cart($product_id, $user_id, $qty, $price, $total_price)
         if ($cart->execute()) :
             echo '<script>alert("Product added to cart successfully.")</script>';
         else :
-            echo '<script>alert("There is some issue to add product.")</script>';
+            echo '<script>alert("There was some issue.")</script>';
         endif;
-        header("Location: index.php");
+        header("Location: cart.php");
 
     else :
 
@@ -131,9 +131,9 @@ function add_to_cart($product_id, $user_id, $qty, $price, $total_price)
         if ($cart->execute()) :
             echo '<script>alert("Product added to cart successfully.")</script>';
         else :
-            echo '<script>alert("There is some issue to add product.")</script>';
+            echo '<script>alert("There was some issue.")</script>';
         endif;
-        header("Location: index.php");
+        header("Location: cart.php");
     endif;
 }
 
@@ -163,7 +163,7 @@ function check_cart()
     endif;
 }
 
-// function to check if post is booked or not
+// function to check if product is booked or not
 function is_wishlisted($product_id, $user_id)
 {
     global $con;
@@ -207,16 +207,16 @@ function remove_wishlist($product_id, $user_id)
 
     $is_wishlisted = is_wishlisted($product_id, $user_id);
 
-    if (!$is_wishlisted) {
-        $message['error'] = "This post is already not saved.";
+    if (!$is_wishlisted) :
+        $message['error'] = "This product is already not saved.";
         return $message;
-    }
+    endif;
 
     $stmt = $con->prepare("DELETE FROM wishlist WHERE product_id = ? AND user_id = ?");
     $stmt->bind_param('ii', $product_id, $user_id);
     if ($stmt->execute()) :
-        $message['success'] = 'The post is successfully removed from saved list.';
+        $message['success'] = 'The product is successfully removed.';
     else :
-        $message['error'] = 'There is an error while removing the saved post. Please try again later.';
+        $message['error'] = 'Error while removing saved product.';
     endif;
 }

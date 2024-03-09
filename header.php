@@ -21,9 +21,9 @@ require "functions.php";
             <div class="row">
                 <div class="col-md-5">
                     <h1 class="fs-5 mb-0">
-                        Name :
+                        Name : <strong>Prabhat Gurung</strong>
                     </h1>
-                    <strong>Roll No. :</strong>
+                    <strong>Roll No. : 08</strong>
                 </div>
                 <div class="col-md-7">
                     <ul class="list-unstyled d-flex justify-content-end gap-4">
@@ -43,7 +43,7 @@ require "functions.php";
                             <button type="button" class="btn btn-light">
                                 <li><a href="cart.php" class="text-decoration-none">Cart</a></li>
                             </button>
-                            <a href="view_orders.php" class="me-2 btn btn-danger">View my orders</a>
+                            <a href="view_orders.php" class="me-2 btn btn-secondary">View my orders</a>
                             <?php if (is_admin()) : ?>
                                 <button type="button" class="btn btn-light">
                                     <li><a href="add_product.php" class="text-decoration-none">Add Product</a></li>

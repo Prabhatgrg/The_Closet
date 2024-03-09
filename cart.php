@@ -12,7 +12,7 @@ require 'header.php'; ?>
                     $cart_products = get_cart_products();
                     if (!isset($cart_products['error'])) : ?>
                         <a href="clear_cart.php" class="btn btn-danger">Empty Cart</a>
-                        <a href="orders.php" class="me-2 btn btn-danger">View my orders</a>
+                        <!-- <a href="orders.php" class="me-2 btn btn-danger">View my orders</a> -->
                 </div>
             <?php endif; ?>
             <div class="col-12">
